@@ -8,10 +8,19 @@ using namespace cv;
 
 int main()
 {
-	cv::Mat srcMat = imread("C:\\Users\\27318\\Desktop\\大二下网络课程\\数字图像\\curry.jpg",0);
-	imshow("curry", srcMat);
-	waitKey(0);
-	return 0;
+	VideoCapture cap(0);
+	while (1)
+	{
+		Mat frame;
+		Mat dstMat1, dstMat2;
+		cap >> frame;
+		Sobel(frame, dstMat1, CV_8U, 1, 0, 3, 1, 0, BORDER_DEFAULT);
+		Sobel(frame, dstMat2, CV_8U, 0, 1, 3, 1, 0, BORDER_DEFAULT);
+		imshow("原图", frame);
+		imshow("x方向Sobel", dstMat1);
+		imshow("y方向Sobel", dstMat2);
+		waitKey(30);
+	}
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
