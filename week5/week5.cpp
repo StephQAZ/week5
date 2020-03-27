@@ -8,10 +8,17 @@ using namespace cv;
 
 int main()
 {
-	cv::Mat srcMat = imread("C:\\Users\\27318\\Desktop\\大二下网络课程\\数字图像\\curry.jpg",0);
-	imshow("curry", srcMat);
-	waitKey(0);
-	return 0;
+	VideoCapture cap(0);
+	while (1)
+	{
+		Mat frame;
+		Mat dstMat;
+		cap >> frame;
+		blur(frame, dstMat, Size(5,5));
+		imshow("原图", frame);
+		imshow("均值滤波", dstMat);
+		waitKey(30);
+	}
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
