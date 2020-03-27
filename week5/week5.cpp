@@ -8,8 +8,10 @@ using namespace cv;
 
 int main()
 {
-	cv::Mat srcMat = imread("C:\\Users\\27318\\Desktop\\大二下网络课程\\数字图像\\curry.jpg",0);
-	imshow("curry", srcMat);
+	cv::Mat srcMat = imread("C:\\Users\\27318\\Desktop\\大二下网络课程\\数字图像\\curry.jpg");
+	Mat dstMat;
+	medianBlur(srcMat, dstMat, 7);
+	imshow("curry", dstMat);
 	waitKey(0);
 	return 0;
 }
